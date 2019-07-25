@@ -23,7 +23,8 @@ def split(images):
     Returns a tuple containing a list of image ID's and an array of features.
     """
     keys = [key for key in images]
-    features = np.array([images[key] for key in keys])
+    features = np.array(list(images[key] for key in keys))
+    features = np.squeeze(features)
     return keys, features
 
 def stitch(keys, embeddings):
