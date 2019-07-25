@@ -24,9 +24,9 @@ def generate_training(captions, image_embeds, n):
 	triples = []
 
 	for i in range(n):
-		good_key = random.choice(dictionary.keys())
+		good_key = random.choice(captions.keys())
 
-		good_image = image_embeds[good_image]
+		good_image = image_embeds[good_key]
 		good_caption = secrets.choice(captions[good_key])
 		index = random.choice(captions.keys())
 		while index != good_key:
