@@ -11,6 +11,12 @@ with open("idfs.pickle", mode="rb") as opened_file:
     word_idfs_file = pickle.load(opened_file)
 
 def glover(text):
+    """
+    :param
+    text:string of our captions
+    :return
+    vectors: a (50,)np.ndarray that represents out caption in semantic space
+    """
     vectors = np.zeros((50,))
     text = text.split()
     for word in text:
