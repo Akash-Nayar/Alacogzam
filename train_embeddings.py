@@ -13,3 +13,6 @@ def find_caption():
     caption = captions[key][np.random.randint(5)]
     return key, caption
 
+key, caption = find_caption()
+embeddng_train_text = glove.glover(caption)
+#key is the image id to the good image that we will use in our training process
