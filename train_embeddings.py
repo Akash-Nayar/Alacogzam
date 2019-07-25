@@ -1,5 +1,12 @@
 import glove
 import numpy as np
+import pickle
+import json
+
+with open("resnet18_features.pkl", mode="rb") as imgdata:
+    images = pickle.load(imgdata)
+
+images = dict(images)
 
 import pickle
 with open("captions.pickle", "rb") as database:
