@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 def accuracy(goodSim, badSim):
     """
-    description: provides the accuracy of which good images are better. 
+    description: provides the accuracy of which good images are better.
     :param goodSim: [np.array] of  length of batch size. Connected with the embedded text
     :param badSim:  [np.array] of length of batch size. Connected with the embedded text
     :return: the average of the correct responses
@@ -19,8 +19,6 @@ def accuracy(goodSim, badSim):
     if isinstance(badSim, mg.Tensor):
         badSim = badSim.data
     return np.mean(goodSim>badSim)
-
-
 
 def normalize(arr):
     """
@@ -33,4 +31,10 @@ def normalize(arr):
     return arr/(mg.sqrt(mg.sum(arr**2)))
 
 def similarity(caption, image):
+    """
+    description: checks to see how closely connected the caption is to the image
+    :param caption: [numpy.ndarray] shape(M, 50)
+    :param image: [numpy.ndarray] shape = (M,50)
+    :return: the similarities of the 2 embedded variables  [numpy.ndarray] shape = (50,) Believe
+    """
     return mg.sum((caption*image), axis = 1)
