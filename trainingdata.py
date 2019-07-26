@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import secrets
+import glove
 
 def generate_training(captions, image_embeds, n):
 	"""
@@ -27,7 +28,7 @@ def generate_training(captions, image_embeds, n):
 		good_key = random.choice(captions.keys())
 
 		good_image = image_embeds[good_key]
-		good_caption = secrets.choice(captions[good_key])
+		good_caption = glove.glover(secrets.choice(captions[good_key]))
 		index = random.choice(captions.keys())
 		while index != good_key:
 			index = random.choice(captions.keys())
