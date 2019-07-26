@@ -36,7 +36,7 @@ def accuracy_triples(goodSim, badSim):
     else:
         num_correct += 0
 
-    percentage = num_correct /
+    percentage = num_correct / 5
     percentage = math.round(percentage, 2)
 
 
