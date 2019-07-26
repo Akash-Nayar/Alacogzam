@@ -53,3 +53,6 @@ def normalize(arr):
     :return: [np.array] shape = (M, 50)
     """
     return arr/(mg.sqrt(mg.sum(arr**2)))
+
+def similarity(caption, image):
+    mg.sum((caption*image), axis = 1)
