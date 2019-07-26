@@ -15,7 +15,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 #Ask Lillian after I set it based on the generating triples code
 #Not done.
-def accuracy_triples(triples, n):
+def accuracy_triples(goodSim, badSim):
     """
     :param emb_text: the semantic embedding of text. [List of numpy arrays]
     :param emb_good: good_image embedding; numpy array [List of numpy arrays]
@@ -24,24 +24,21 @@ def accuracy_triples(triples, n):
     :return:
     """
 
-    emb_text = triples[0]
-    emb_good = triples[1]
-    emb_bad = triples[2]
+    #sim_to_good = cosine_similarity(emb_text[i], emb_good[i])
+    #sim_to_bad = cosine_similarity(emb_text[i], emb_bad[i])
+    #sim_or_not = sim_to_good > sim_to_bad
 
     num_correct = 0
-    for i in range(n):
-        sim_to_good = cosine_similarity(emb_text[i], emb_good[i])
-        sim_to_bad = cosine_similarity(emb_text[i], emb_bad[i])
-        sim_or_not = sim_to_good > sim_to_bad
-        if sim_or_not:
-            num_correct += 1
-        else:
-            num_correct += 0
+    sim_or_not = goodSim > badSim
 
-        percentage = num_correct / n
-        percentage = math.round(percentage, 2)
+    if sim_or_not:
+        num_correct += 1
+    else:
+        num_correct += 0
 
-    return percentage
+    percentage = num_correct /
+    percentage = math.round(percentage, 2)
+
 
 
 def normalize(arr):
