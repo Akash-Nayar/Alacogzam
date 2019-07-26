@@ -30,9 +30,8 @@ def accuracy_triples(triples, n):
 
     num_correct = 0
     for i in range(n):
-
         sim_to_good = cosine_similarity(emb_text[i], emb_good[i])
-        sim_to_bad = cosine_similarity(emb_text, emb_bad)
+        sim_to_bad = cosine_similarity(emb_text[i], emb_bad[i])
         sim_or_not = sim_to_good > sim_to_bad
         if sim_or_not:
             num_correct += 1
@@ -51,6 +50,6 @@ def normalize(arr):
         It should take in an array and normalize it  by dividing by the magnitude of the vector.
         The resulting array is the unit vector
     :param arr: [np.ndarray] shape = (M, 50)
-    :return: [np.array] shape = (M, 50) 
+    :return: [np.array] shape = (M, 50)
     """
     return arr/(mg.sqrt(mg.sum(arr**2)))
