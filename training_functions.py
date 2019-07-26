@@ -2,6 +2,7 @@
 
 import math
 import mygrad as mg
+import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 
@@ -13,31 +14,38 @@ from sklearn.metrics.pairwise import cosine_similarity
 # 2: embedded good_image
 # 3: embedded bad_image
 
-#Ask Lillian after I set it based on the generating triples code
-#Not done.
-def accuracy_triples(goodSim, badSim):
+
+#
+def accuracy(goodSim, badSim):
     """
-    :param emb_text: the semantic embedding of text. [List of numpy arrays]
-    :param emb_good: good_image embedding; numpy array [List of numpy arrays]
-    :param emb_bad: bad_image embedding; numpy array   [List of numpy arrays]
-    :param n: the numbers of triples that have to be processed
-    :return:
+
+    :param goodSim: [np.array] of  length of batch size. Connected with the embedded text
+    :param badSim:  [np.array] of length of batch size. Connected with the embedded text
+    :return: the average of the correct responses
     """
 
     #sim_to_good = cosine_similarity(emb_text[i], emb_good[i])
     #sim_to_bad = cosine_similarity(emb_text[i], emb_bad[i])
     #sim_or_not = sim_to_good > sim_to_bad
 
-    num_correct = 0
-    sim_or_not = goodSim > badSim
+    #May need to
 
-    if sim_or_not:
-        num_correct += 1
-    else:
-        num_correct += 0
+    #num_correct = 0
+    #sim_or_not = goodSim > badSim
 
-    percentage = num_correct / 5
-    percentage = math.round(percentage, 2)
+    #if sim_or_not:
+    #    num_correct += 1
+    #else:
+    #    num_correct += 0
+
+    #percentage = num_correct / 5
+    #percentage = math.round(percentage, 2)
+
+    if isinstance(goodSim, mg.Tensor):
+        goodSim = goodSim.data
+    if isinstance(badSim, mg.Tensor):
+        badSim = badSim.data
+    return np.mean(goodSim>badSim)
 
 
 
