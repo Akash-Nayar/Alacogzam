@@ -1,10 +1,11 @@
 from collections import defaultdict
 import numpy as np
-
+import pickle
 import gensim
+
 from gensim.models.keyedvectors import KeyedVectors
 
-path = r"C:\Users\Leviathan\Downloads\glove.6B.50d.txt.w2v\glove.6B.50d.txt.w2v"
+path = r".\glove.6B.50d.txt.w2v"
 glove = KeyedVectors.load_word2vec_format(path, binary=False)
 
 with open("idfs.pickle", mode="rb") as opened_file:
