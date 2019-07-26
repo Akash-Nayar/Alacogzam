@@ -44,7 +44,11 @@ def generate_training(captions, image_features, n):
 		good_images.append(good_image)
 		bad_images.append(bad_image)
 
+<<<<<<< HEAD
 	return np.array(good_captions), np.array(good_images), np.array(bad_images)
+=======
+	return np.squeeze(np.array(good_captions)), np.squeeze(np.array(good_images)), np.squeeze(np.array(bad_images))
+>>>>>>> a85cc51e46af78258a0f06469aa62164df932bac
 
 
 
