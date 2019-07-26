@@ -22,7 +22,9 @@ def generate_training(captions, image_embeds, n):
 		list : n number of triples.
 	"""
 
-	triples = []
+	good_captions = []
+	good_images = []
+	bad_images = []
 
 	for i in range(n):
 		good_key = random.choice(captions.keys())
@@ -33,9 +35,11 @@ def generate_training(captions, image_embeds, n):
 		while index != good_key:
 			index = random.choice(captions.keys())
 		bad_image = image_embeds[index]
-		triples.append(good_caption, good_image, bad_image)
+		good_captions.append(good_caption)
+		good_images.append(good_image)
+		bad_images.append(bad_image)
 
-	return triples
+	return (np.array(good_captions), np.array(good_images), np.array(bad_images))
 
 
 
