@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import secrets
+import glove
 
 def generate_training(captions, image_embeds, n):
 	"""
@@ -11,7 +12,7 @@ def generate_training(captions, image_embeds, n):
 	captions : dict
 		image_id : List[captions for that image]
 
-	imaged_embeds : dict
+	image_embeds : dict
 		image_id : np.array(Embed for that image)
 		
 	n : int
@@ -21,20 +22,24 @@ def generate_training(captions, image_embeds, n):
 		list : n number of triples.
 	"""
 
-	triples = []
+	good_captions = []
+	good_images = []
+	bad_images = []
 
 	for i in range(n):
 		good_key = random.choice(captions.keys())
 
 		good_image = image_embeds[good_key]
-		good_caption = secrets.choice(captions[good_key])
+		good_caption = glove.glover(secrets.choice(captions[good_key]))
 		index = random.choice(captions.keys())
 		while index != good_key:
 			index = random.choice(captions.keys())
 		bad_image = image_embeds[index]
-		triples.append(good_caption, good_image, bad_image)
+		good_captions.append(good_caption)
+		good_images.append(good_image)
+		bad_images.append(bad_image)
 
-	return triples
+	return (np.array(good_captions), np.array(good_images), np.array(bad_images))
 
 
 

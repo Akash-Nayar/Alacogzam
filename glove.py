@@ -32,4 +32,4 @@ def glover(text):
             vector = word_vector*word_idf
 
             vectors += vector
-    return vectors
+    return vectors.reshape((1,50))
