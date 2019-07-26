@@ -11,7 +11,7 @@ def generate_training(captions, image_embeds, n):
 	captions : dict
 		image_id : List[captions for that image]
 
-	imaged_embeds : dict
+	image_embeds : dict
 		image_id : np.array(Embed for that image)
 		
 	n : int
