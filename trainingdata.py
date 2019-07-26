@@ -3,6 +3,12 @@ import random
 import secrets
 import glove
 
+import pickle
+with open("captions.pickle", "rb") as database:
+    captions = pickle.load(database)
+
+captions = dict(captions)
+
 def generate_training(captions, image_features, n):
 	"""
 	Generates triples to train the RNN
@@ -38,7 +44,7 @@ def generate_training(captions, image_features, n):
 		good_images.append(good_image)
 		bad_images.append(bad_image)
 
-	return (np.array(good_captions), np.array(good_images), np.array(bad_images))
+	return np.array(good_captions), np.array(good_images), np.array(bad_images)
 
 
 
