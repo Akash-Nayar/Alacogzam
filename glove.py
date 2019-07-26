@@ -1,6 +1,6 @@
 from collections import defaultdict
 import numpy as np
-
+import pickle
 import gensim
 from gensim.models.keyedvectors import KeyedVectors
 
@@ -31,4 +31,4 @@ def glover(text):
             vector = word_vector*word_idf
 
             vectors += vector
-    return vectors
+    return vectors.reshape((1,50))
