@@ -6,40 +6,13 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-# compute cosine-similarity between all pairs of rows of `x`
-
-#The triples is a tuple of size 3
-#In each iteration, it has a numpy array of size n
-# 1: embedded text
-# 2: embedded good_image
-# 3: embedded bad_image
-
-
-#
 def accuracy(goodSim, badSim):
     """
-
+    description: provides the accuracy of which good images are better. 
     :param goodSim: [np.array] of  length of batch size. Connected with the embedded text
     :param badSim:  [np.array] of length of batch size. Connected with the embedded text
     :return: the average of the correct responses
     """
-
-    #sim_to_good = cosine_similarity(emb_text[i], emb_good[i])
-    #sim_to_bad = cosine_similarity(emb_text[i], emb_bad[i])
-    #sim_or_not = sim_to_good > sim_to_bad
-
-    #May need to
-
-    #num_correct = 0
-    #sim_or_not = goodSim > badSim
-
-    #if sim_or_not:
-    #    num_correct += 1
-    #else:
-    #    num_correct += 0
-
-    #percentage = num_correct / 5
-    #percentage = math.round(percentage, 2)
 
     if isinstance(goodSim, mg.Tensor):
         goodSim = goodSim.data
