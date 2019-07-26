@@ -39,7 +39,7 @@ def generate_training(captions, image_embeds, n):
 		good_images.append(good_image)
 		bad_images.append(bad_image)
 
-	return (np.array(good_captions), np.array(good_images), np.array(bad_images))
+	return np.squeeze(np.array(good_captions)), np.squeeze(np.array(good_images)), np.squeeze(np.array(bad_images))
 
 
 
