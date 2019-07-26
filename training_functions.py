@@ -52,4 +52,4 @@ def normalize(arr):
     return arr/(mg.sqrt(mg.sum(arr**2)))
 
 def similarity(caption, image):
-    mg.sum((caption*image), axis = 1)
+    return mg.sum((caption*image), axis = 1)
