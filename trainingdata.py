@@ -3,11 +3,6 @@ import random
 import secrets
 import glove
 
-import pickle
-with open("captions.pickle", "rb") as database:
-    captions = pickle.load(database)
-
-captions = dict(captions)
 
 def generate_training(captions, image_features, n):
 	"""
@@ -27,18 +22,20 @@ def generate_training(captions, image_features, n):
 	Returns:
 		list : n number of triples.
 	"""
-
+	print("started function")
 	good_captions = []
 	good_images = []
 	bad_images = []
 
 	for i in range(n):
-		good_key = random.choice(captions.keys())
+		print("i: "+str(i))
+		good_key = random.choice(list(captions))
 		good_image = image_features[good_key]
-		good_caption = glove.glover(secrets.choice(captions[good_key]))
-		index = random.choice(captions.keys())
-		while index != good_key:
-			index = random.choice(captions.keys())
+		good_caption = glove.glover(random.choice(captions[good_key]))
+		index = random.choice(list(captions))
+		while index == good_key:
+			print("while")
+			index = random.choice(list(captions))
 		bad_image = image_features[index]
 		good_captions.append(good_caption)
 		good_images.append(good_image)
