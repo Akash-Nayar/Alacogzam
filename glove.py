@@ -18,6 +18,8 @@ def glover(text):
     :return
     vectors: a (50,)np.ndarray that represents out caption in semantic space
     """
+
+
     vectors = np.zeros((50,))
     text = text.split()
     for word in text:
